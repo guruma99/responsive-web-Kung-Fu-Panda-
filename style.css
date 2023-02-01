@@ -13,6 +13,10 @@ body{
 }
 
 
+.sm-only{
+  display: none;
+}
+
 .visually-hidden{
   display:none;
 }
@@ -30,6 +34,7 @@ li{
 header{
   position: sticky;
   top: 0px;
+  z-index: 1;
 }
 
 .gnb-box{
@@ -42,23 +47,154 @@ header{
 
 }
 
+
 .gnb-box img{
   width: 60px;
   margin-left: 20px;
 }
 
 .gnb-list{
+  position: relative;
   width:300px;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   font-size: 18px;
-  margin-right: 40px;
+  margin-right: 50px;
+}
+
+.gnb-list a{
+position: absolute;
+transform: translate(-50%, -50%)
 }
 
 a{
+
   text-decoration: none;
   color: #fff;
     /* transition: all 300ms ease-in-out; */
+}
+
+.sidebar{
+  position: fixed;
+  top:0;
+  right:0px;
+  width:280px;
+  height: 100vh;
+  padding: 30px 20px;
+  background-color: #fff;
+  z-index: 200;
+  transform: translate(280px, 0);
+  transition: transform 300ms ease-in-out;
+  overflow: scroll;
+  overscroll-behavior: none;
+}
+
+
+.sidebar.is-active{
+  transform: translate(0, 0);
+}
+
+.sidebar-header{
+  padding: 0 12px;
+}
+
+.sidebar-user{
+  height: 80px;
+}
+
+.sidebar-user a{
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #000000;
+  font-weight: 700;
+  width:100%;
+}
+
+.avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  overflow: hidden;
+  margin-right: 8px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.drawer-menu{
+  border-bottom: 1px solid #e0e2e7;
+
+}
+
+.drawer-menu-content{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms ease-in-out;
+}
+
+.drawer-menu.is-series.is-open .drawer-menu-content{
+  max-height: 288px;
+
+}
+
+.drawer-menu.is-character.is-open .drawer-menu-content{
+  max-height: 216px;
+}
+
+.drawer-menu.is-theater.is-open .drawer-menu-content{
+  max-height: 180px;
+}
+
+
+.drawer-menu-button{
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 0 8px;
+  font-weight: 700;
+}
+
+.drawer-menu.is-open .fa-chevron-down{
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+.drawer-menu-button i:first-child{
+  margin-right: 8px;
+  font-size: 20px;
+  color: #3f4150;
+}
+
+.drawer-menu-button i:last-child{
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  right: 10px;
+  color: #3f4150;
+}
+
+.drawer-menu-item {
+  /* display: flex;
+  align-items: center; */
+  width: 100%;
+  height: 30px;
+  padding: 0 12px;
+  font-weight: 700;
+  color: #3f4150;
 }
 
 .background{
@@ -101,7 +237,7 @@ margin:0;
 
 /* clear는 뭐엿더라? */
 
-.front-title{
+.front-txt h1{
   font-size: 50px;
   margin-bottom: 20px;
 }
@@ -236,3 +372,215 @@ button:hover{
   z-index: 5;
 }
 
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width:100%;
+  height: 100vh;
+  background-color: rgba(63,65,80, 0.5);
+  visibility: hidden;
+  transition: visibility 300ms ease-in-out;
+}
+
+.overlay.is-active{
+  visibility: visible;
+}
+
+@media screen and (max-width:1200px) {
+  .gnb-box{
+    height: 60px;
+    padding: 8px;
+  }
+  
+  .gnb-box img{
+    width: 50px;
+    margin-left: 20px;
+    margin-top: 8px;
+  }
+  
+  .gnb-list{
+    width: 250px;
+    font-size: 16px;
+    margin-right: 20px;
+  }
+
+  .background{
+    height: 550px;
+  }
+
+  .front-txt h1{
+    font-size: 40px;
+  }
+  
+  
+  button{
+    width: 80px;
+    padding: 7px;
+    font-size: 13px;
+  }
+
+  .menu-bar{
+    width:170px;
+    height: 150px;
+    font-size: 18px;
+  }
+  
+  .menu-bar p:hover{
+    font-size: 20px;
+  }
+
+  .post-card {
+    width: 400px;
+    height: 180px;
+    background-color: rgb(255, 141, 48);
+    border-radius: 10px;
+
+  }
+
+  .kung1{
+    display: none;
+  }
+
+.box-image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+  .kung2{
+    background-image: url(./images/pngegg\ \(2\).png);
+    width: 500px;
+    height: 600px;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 100px 100px;
+    background-repeat: no-repeat;
+
+  }
+
+  .box-image{
+    /* border: 2px solid #fff; */
+    display: flex;
+    width: 500px;
+    height: 600px;
+    justify-content: space-between;
+  }
+
+}
+
+@media screen and (max-width:768px) {
+  .sidebar a{
+    text-decoration: none;
+    color: #333;
+      /* transition: all 300ms ease-in-out; */
+  }
+
+
+  .sm-only{
+    display: block;
+
+  }
+  .fa-bars{
+    margin-right: 10px;
+  }
+
+  .gnb-list{
+    display: none;
+  }
+
+  .gnb-box{
+    height: 50px;
+    padding: 6px;
+  }
+  
+  .gnb-box img{
+    width: 40px;
+    margin-top: 7px;
+    margin-left: 10px;
+  }
+  
+  .gnb-list{
+    width: 200px;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+
+  .background{
+    height: 400px;
+  }
+  
+  .front-txt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:#fff;
+    height:600px;
+  }
+
+  .front-txt h1{
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+  
+  button{
+    width: 80px;
+    padding: 7px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .post-card:first-child{
+    margin-top: 100px;
+  }
+
+  .post-card { 
+    width: 350px;
+    height: 150px;
+  }
+
+  .menu-bar{
+    display: none;
+  }
+
+  .fa-circle-arrow-up{
+    font-size: 35px;
+    right: -5px;
+  }
+
+  .kung1{
+    display: none;
+  }
+
+.box-image-box {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+  .kung2{
+    background-image: url(./images/pngegg\ \(2\).png);
+    width: 300px;
+    height: 400px;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 0px 400px;
+    background-repeat: no-repeat;
+
+  }
+
+  .box-image{
+    display: flex;
+    width: 300px;
+    height: 400px;
+    justify-content: space-between;
+  }
+
+ 
+}
